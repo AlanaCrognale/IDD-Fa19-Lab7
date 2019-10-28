@@ -11,13 +11,17 @@
 ## Part A. HelloYou from the Raspberry Pi
 
 **a. Link to a video of your HelloYou sketch running.**
-[!HelloYou](https://github.com/AlanaCrognale/IDD-Fa19-Lab7/blob/master/HelloYou.MOV)
+
+[HelloYou](https://github.com/AlanaCrognale/IDD-Fa19-Lab7/blob/master/HelloYou.MOV)
 
 ## Part B. Web Camera
 
 **a. Compare `helloYou/server.js` and `IDD-Fa18-Lab7/pictureServer.js`. What elements had to be added or changed to enable the web camera? (Hint: It might be good to know that there is a UNIX command called `diff` that compares files.)**
 
+PictureServer.js adds additional code to incorporate serial communication for the webcam, using the NodeWebCam variable.  From this, pictureServer.js adds the additional functionality to capture and save an image on the server when the corresponding button is pressed.  The initialization variables are also set as 'var' in pictureServer.js, while they are set as 'const' in server.js.
+
 **b. Include a video of your working video doorbell**
+[Doorbell](https://github.com/AlanaCrognale/IDD-Fa19-Lab7/blob/master/doorbell.MOV)
 
 ## Part C. Make it your own
 
