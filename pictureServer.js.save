@@ -18,6 +18,9 @@ Notes: You will need to specify what port you would like the webapp to be
 served from. You will also need to include the serial port address as a command
 line input.
 */
+const mplayer = require('play-sound-mplayer');
+const player = new mplayer.AudioPlayer();
+
 var express = require('express'); // web server application
 var app = express(); // webapp
 var http = require('http').Server(app); // connects http library to server
@@ -27,16 +30,7 @@ var SerialPort = require('serialport'); // serial library
 var Readline = SerialPort.parsers.Readline; // read serial data as lines
 //-- Addition:
 var NodeWebcam = require( "node-webcam" );// load the webcam module
-//var player = require('play-sound')(opts={});
-//var play = require('play');
-//const mplayer = require('play-sound-mplayer');
-//const player = new mplayer.AudioPlayer();
-//const open = require('open');
-//const bopen = require('bopen');
-//const Sound = require('ebabel-sound');
-//var baudio = require('baudio');
-//var fs = require('fs'), gm = require('gm');
-var dateTime = require('get-date');
+
 //---------------------- WEBAPP SERVER SETUP ---------------------------------//
 // use express to create the simple webapp
 app.use(express.static('public')); // find pages in public directory
@@ -105,30 +99,6 @@ parser.on('data', function(data) {
   NodeWebcam.capture('public/'+imageNameButton, opts, function( err, data ) {
   io.emit('newPicture',(imageNameButton+'.jpg')); ///Lastly, the new name is send to the client web browser.
  });
-
-console.log('You rang the doorbell at: ' + dateTime(true));
-//gm('public/'+imageNameButton).resize(240,240).noProfile().write('public/crazyv1.jpg',function(err){
-//if (!err) console.log('done');
-//});
-
-//gm('public/'+imageNameButton).flip().magnify().rotate('green',45).blur(7,3)
-//.crop(300,300,150,300).edge(3).write('/public/crazy.jpg',function(err){
-//if (err)
-//console.log('error');
-//});
-//io.emit('newPicturev2',('crazy.jpg'));
-//var player = require('play-sound')(opts={});
-//player.play('./DoorbellSoundEffect.mp3',function(err){
-//   if (err) throw err;
-//});
-//play.sound('./DoorbellSoundEffect.mp3');
-//const open = require('open');
-//(async () => {
-//await open('google.com');
-//}) ();
-//bopen('http:\/\/google.com');
-//const middleA = new Sound(0,440,0.2);
-
 }
 });
 //----------------------------------------------------------------------------//
@@ -151,10 +121,6 @@ io.on('connect', function(socket) {
     console.log('ledOFF');
     serial.write('L');
   });
-
-socket.on('displayTime',function(){
-console.log("You checked the time at: " + dateTime(true));
-});
 
   //-- Addition: This function is called when the client clicks on the `Take a picture` button.
   socket.on('takePicture', function() {

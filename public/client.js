@@ -24,6 +24,11 @@ function ledOFF() {
   socket.emit('ledOFF');
 }
 
+//function for date/time
+function displayTime(){
+socket.emit('displayTime');
+}
+
 //-- Addition: Forward the `Take a picture` button-press to the webserver.
 function takePicture(){
   socket.emit('takePicture');
