@@ -1,6 +1,6 @@
 # Video Doorbell, Lab 7
 
-*A lab report by John Q. Student*
+*A lab report by Alana C. Student*
 
 ### In This Report
 
@@ -11,6 +11,7 @@
 ## Part A. HelloYou from the Raspberry Pi
 
 **a. Link to a video of your HelloYou sketch running.**
+[!HelloYou](https://github.com/AlanaCrognale/IDD-Fa19-Lab7/blob/master/HelloYou.MOV)
 
 ## Part B. Web Camera
 
